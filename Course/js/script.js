@@ -65,9 +65,131 @@ let mark = { mass: 122, height: 1.92 };
 let johnBMI = getBMI(john.mass, john.height);
 let markBMI = getBMI(mark.mass, mark.height);
 
-let johnsGreaterMark = johnBMI >markBMI;
+let johnsGreaterMark = johnBMI >   markBMI;
 
 console.log(`John's BMI: ${johnBMI}, Mark's BMI: ${markBMI}`);
 console.log(`Jon's BMI is hiher than Mark's? ${johnsGreaterMark}`); 
 
 console.log('Coding challenge 1 ends');
+
+
+/* if / else  statement */
+if (johnBMI > markBMI){
+    console.log('John\'s BMI is greater than Mark\'s BMI');
+}else{
+    console.log('Mark\s BMI is greater than John\'s BMI');
+} 
+
+
+/* Boolean logic */
+
+let firstName = 'John';
+let age = 13;
+console.log(`${firstName} ${age}`);
+
+if(age < 13){
+    console.log(firstName + ' is a boy.');
+} else if(age >= 13 && age < 20){
+    console.log(firstName + ' is a teenager.');
+} else {
+    console.log(firstName + ' is a man.');
+}
+
+/* The Ternary Operator and Switch Statement */
+
+age >= 18 ? console.log(firstName + ' drinks beer.') : console.log(firstName + ' drinks juice.');
+
+var drink = age >= 18 ? 'beer' : 'juice';
+console.log(drink);
+
+let job = 'professor';
+
+switch(job){
+    case 'teacher':
+    case 'professor':
+        console.log(firstName + ' teaches kids how to code.');
+        break;
+    case 'driver':
+        console.log(firstName + ' teaches people how to drive a car.');
+        break;
+    case 'doctor':
+        console.log(firstName + ' is trying to fix people.');
+        break;
+    default:
+        console.log(' doing nothing.');
+}
+
+
+switch(true) {
+    case age < 13: 
+        console.log(firstName + ' is a boy.');
+        break;
+    case age >= 13 && age < 20:
+        console.log(firstName + ' is a teenager.');
+        break;
+    default: 
+        console.log(firstName + ' is a man.');
+
+}
+
+/* Truthy and Falsy valuse*/
+
+// falsy values: undefined, null, 0, '', NaN
+// truthy falues: NOT falsy values;
+
+let height;
+height = 23;
+console.log(typeof height);
+if(height || height === 0){
+    console.log('The variable is defined.');
+}else{
+    console.log('The variable is not defined.');
+}
+
+//Equality operators
+if(height == '23'){
+    console.log('The == operator does type coercion!');
+}
+
+console.log(23 == '23');
+
+let a = null;
+console.log(`Value: ${a}, Type: ${typeof a}`);
+a = +null;
+console.log(`Value: ${a}, Type: ${typeof a}`);
+
+/* Coding challenge 2 */
+
+let mikeScore = [89, 120, 103];
+let johnScore = [116, 94, 123];
+let marryScore = [97, 134, 105];
+
+let reducer = (accumulator, currentValue) => accumulator + currentValue;
+let avg = (score) => score.reduce(reducer) / score.length;
+
+mikeAvgScore = avg(mikeScore);
+johnAvgScore = avg(johnScore);
+marryAvgScore = avg(marryScore);
+
+let winner = Math.max(mikeAvgScore, johnAvgScore, marryAvgScore);
+
+function nomination(){
+    switch(true){
+        case mikeAvgScore === winner:
+            console.log(`Mike won with the score ${winner}`);
+            break;
+        case johnAvgScore === winner:
+            console.log(`John won with the score ${winner}`);
+            break;
+        case marryAvgScore === winner:
+            console.log(`Marry won with the score ${winner}`);
+            break;
+    }
+}
+
+nomination();
+johnAvgScore += 110;
+winner = Math.max(mikeAvgScore, johnAvgScore, marryAvgScore);
+nomination();
+
+
