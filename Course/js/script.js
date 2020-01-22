@@ -262,3 +262,31 @@ console.log(john.indexOf(1990));
 let isDesigner = john.indexOf('designer') === -1 ?
     'John is not a designer' : 'John is a designer';
 console.log(isDesigner);
+
+/* Coding challenge 3 */
+let bills = new Array(124, 48, 268);
+
+let tipCalculator = (bill) => {
+    console.log(bill);
+    switch (true){
+        case bill < 50:
+            return bill * 0.2;
+        case bill < 200:
+            return bill * 0.15;
+        case bill >= 200:
+            return bill * 0.1;
+    }
+}
+
+let tips = [];
+let totalAmountWithTips = [];
+
+for(i = 0; i < bills.length; i++){
+    let tip = tipCalculator(bills[i]);
+    tips.push(tip);
+    totalAmountWithTips.push(bills[i] + tip);
+}
+
+console.log(bills);
+console.log(tips);
+console.log(totalAmountWithTips);
