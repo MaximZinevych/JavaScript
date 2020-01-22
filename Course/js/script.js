@@ -206,5 +206,59 @@ function yearsUntilRetirement(year, name){
 }
 
 yearsUntilRetirement(1992, 'Maxim');
-yearsUntilRetirement(1955, 'Markus');
+yearsUntilRetirement(1955 , 'Markus');
 yearsUntilRetirement(2000, 'Boris');
+
+/* Function Statement and Expressions */
+
+//Function declaration
+function whatDoYouDo1(job, firstName){
+
+}
+
+//Function expression
+let whatDoYouDo = function (job, firstName){
+    switch(job){
+        case 'teacher':
+            return firstName + ' teaches kids how to code.';
+        case 'driver':
+            return firstName + ' drives a cab in Lisbon.';
+        case 'designer':
+            return firstName + ' designs beautiful websites';
+        default:
+            return firstName + ' does something else.'
+    }
+}
+
+console.log(whatDoYouDo('driver', 'John'));
+
+/* Arrays */
+
+
+var names = ['John', 'Mark', 'Jane'];
+var years = new Array(1990, 1969, 1948);
+
+console.log(names);
+
+
+//Mutate array data
+names[1] = 'Ben';
+console.log(names);
+
+names[5] = 'Mary';
+console.log(names);
+
+//Different data type
+john = ['John', 'Smith', 1990, 'teacher', false];
+john.push('blue');
+john.unshift('Mr.');
+console.log(john);
+
+john.pop();
+console.log(john);
+
+console.log(john.indexOf(1990));
+
+let isDesigner = john.indexOf('designer') === -1 ?
+    'John is not a designer' : 'John is a designer';
+console.log(isDesigner);
