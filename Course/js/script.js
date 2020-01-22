@@ -193,3 +193,18 @@ winner = Math.max(mikeAvgScore, johnAvgScore, marryAvgScore);
 nomination();
 
 
+/* Functions */
+function yearsUntilRetirement(year, name){
+    let age = calculateAge(year);
+    let retirement = 65 - age;
+    if(retirement > 0){
+        console.log(`${name} retires in ${retirement} years`);
+    } else {
+        console.log(`${name} is already retired`);
+    }
+    
+}
+
+yearsUntilRetirement(1992, 'Maxim');
+yearsUntilRetirement(1955, 'Markus');
+yearsUntilRetirement(2000, 'Boris');
