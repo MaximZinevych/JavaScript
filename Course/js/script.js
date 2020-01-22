@@ -290,3 +290,69 @@ for(i = 0; i < bills.length; i++){
 console.log(bills);
 console.log(tips);
 console.log(totalAmountWithTips);
+
+/* Objects and properties */
+ var markus = {
+     name: 'Markus',
+     surname: 'Smith',
+     birthDate: 1990,
+     family: ['Mark', 'John', 'Bob', 'Emily'],
+     isMarried: false
+ };
+ console.log(markus);
+ console.log(markus.family);
+ console.log(markus['name']);
+ markus['isMarried'] = true;
+ console.log(markus);
+
+ // New Object syntax
+ let jane = new Object();
+ console.log(jane);
+
+ jane.name = 'Jane';
+ jane.birthYear = 1969;
+ console.log(jane);
+
+ //Object methods
+
+ markus = {
+    name: 'Markus',
+    surname: 'Smith',
+    birthDate: 1990,
+    family: ['Mark', 'John', 'Bob', 'Emily'],
+    isMarried: false,
+    calcAge: function(){
+        this.age = new Date().getFullYear() - this.birthDate;
+    }
+};
+markus.calcAge();
+console.log(markus.age);
+
+/* Coding challenge 4 */
+
+mark = {
+    name: 'Mark Lebovski', 
+    mass: 82,
+    height: 1.89,
+    calculateBMI: function(){
+        return this.bmi = this.mass / (this.height * this.height);
+    }
+};
+
+john = {
+    name: 'John Rembo',
+    mass: 81,
+    height: 1.89,
+    calculateBMI: function(){
+        return this.bmi = this.mass / Math.pow(this.height, 2);
+    }
+};
+
+console.log(mark, john);
+if(mark.calculateBMI() == john.calculateBMI()){
+    console.log(`${mark.name} and ${john.name} has the same BMI ${mark.bmi}`);
+}else if(mark.bmi > john.bmi){
+    console.log(`${mark.name} won with BMI ${mark.bmi}`);
+}else {
+    console.log(`${john.name} won with BMI ${john.bmi}`);
+}
