@@ -356,3 +356,104 @@ if(mark.calculateBMI() == john.calculateBMI()){
 }else {
     console.log(`${john.name} won with BMI ${john.bmi}`);
 }
+
+/* This keyword */
+console.log(stark);
+var stark = {
+    name: 'John',
+    surname: 'Stark',
+    birth: 1293,
+    isAlive: true,
+    doSomething: function(){
+        console.log(this);
+
+        function andDosomethingAgain(){
+            console.log(this);
+        }
+
+        andDosomethingAgain();
+    }
+}
+
+
+/* Coding challenge 5*/
+
+console.log('************ Coding challenge 5 ************');
+
+function tipsCalculator(payer){
+
+    let tips = [];
+    let paidAbount = [];
+    let reducer = (accumulator, currentValue) => accumulator + currentValue;
+    let avg = (score) => score.reduce(reducer) / score.length;
+
+    for(let i = 0; i < bills.length; i++){
+
+        if(payer.bills[i] > 0 && payer.bills[i] < payer.rates[0].to)
+           tips[i] = payer.bills[i] * payer.rates[0].rate;
+        else if (payer.bills[i] >= payer.rates[1].from && payer.bills[i] < payer.rates[1].to)
+            tips[i] = payer.bills[i] * payer.rates[1].rate;
+        else if (payer.bills[i] > payer.rates[2].from)
+            tips[i] = payer.bills[i] * payer.rates[2].rate;
+
+        paidAbount[i] = tips[i] + payer.bills[i];
+    }
+
+    console.log(tips, paidAbount);
+    return {tips, paidAbount, averaverageTips: avg(tips)};
+}
+
+let John = {
+    name: 'John',
+    bills: [124, 48, 268, 180, 42],
+    rates: [
+        {rate: 0.2, to: 100},
+        {rate: 0.1, from: 100, to: 300},
+        {rate: .25, from: 300,}
+    ]
+}
+
+let Mark = {
+    name: ' Mark',
+    bills: [77, 375, 110, 45],
+    rates: [
+        {rate: 0.2, to: 50},
+        {rate: 0.15, from: 50, to: 200},
+        {rate: .1, from: 200}
+    ]
+}
+
+let johnAvgTip;
+let markAvgTip;
+console.log(johnAvgTip = tipsCalculator(John));
+console.log(markAvgTip = tipsCalculator(Mark));
+
+console.log(johnAvgTip > markAvgTip ? 
+    `John is the winner: ${johnAvgTip.averaverageTips}` : `Mark is the winner: ${markAvgTip.averaverageTips}`);
+
+/* Coding challenge 5(ver2) */
+
+
+let james = {
+    name: 'John',
+    bills: [124, 48, 268, 180, 42],
+    calcTips: function() {
+        this.tips = [];
+        this.finalValues = [];
+
+        for(let i = 0; i < this.bills.length; i++){
+            let percentage;
+            let bill = this.bills[i];
+
+            if(bill < 50) percentage = .2;
+            else if (bill >= 50 && bill < 200) percentage = .15;
+            else if (bill > 200) percentage = .1;
+
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill + bill * percentage;
+        }
+    }
+}
+
+james.calcTips();
+console.log(james);
