@@ -10,7 +10,7 @@ GAME RULES:
 */
 
 /*   Variables    */
-let scores, roundScore, activePlayer, firstDiceDOM, GAME_PLAYING, finalScore;
+let scores, roundScore, activePlayer, firstDiceDOM, GAME_PLAYING, finalScore, animation;
 
 function init(){
     firstDiceDOM = document.querySelector('#dice-0');
@@ -22,8 +22,14 @@ function init(){
     roundScore = 0;
     activePlayer = 0; 
     scores = [0,0];
+    animation = true;
 
-    finalScoreDOM.value === true ? finalScore = +finalScoreDOM.value : finalScore = 100;
+    if(finalScoreDOM.value){
+        finalScore = +finalScoreDOM.value;
+    }else{
+        finalScore = 100;
+    }
+    console.log(finalScore);
     
     for(let i = 0; i < 2; i++){
         document.getElementById('score-' + i).textContent = '0';
@@ -51,8 +57,18 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         firstDiceDOM.style.display = 'block';
         secondDiceDOM.style.display = 'block';
 
-        firstDiceDOM.src = 'dice-' + dice + '.png';    
-        secondDiceDOM.src = 'dice-' + dice2 + '.png';  
+        firstDiceDOM.src = 'assets/dice-' + dice + '.png';    
+        secondDiceDOM.src = 'assets/dice-' + dice2 + '.png';  
+
+        setTimeout(function(){
+            firstDiceDOM.classList.add('animate');
+            secondDiceDOM.classList.add('animate');
+            let audio = document.getElementById("audio");
+            audio.play();
+        }, 100);
+
+        firstDiceDOM.classList.remove('animate');
+        secondDiceDOM.classList.remove('animate');
 
         if(dice !== 1 && dice2 !== 1){
             roundScore += (dice + dice2);
@@ -78,6 +94,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         if(scores[activePlayer] >= finalScore){
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
             firstDiceDOM.style.display = 'none';
+            secondDiceDOM.style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             toggleControls(GAME_PLAYING = false);
@@ -96,8 +113,12 @@ function nextPlayer(){
         document.querySelector('.player-' + i + '-panel').classList.toggle('active');
         document.querySelector('.s')
     }
-    firstDiceDOM.style.display = 'none';
-    secondDiceDOM.style.display = 'none';
+
+    setTimeout(function(){
+        firstDiceDOM.style.display = 'none';
+        secondDiceDOM.style.display = 'none';
+    }, 500);
+    
 }
 
 function toggleControls(GAME_PLAYING){
