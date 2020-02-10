@@ -110,6 +110,8 @@ console.log(heartRates);
 */
 
 /* Functions returnning functions */
+
+/*
 function interviewQuestion(job){
     if(job === 'designer'){
         return function(name){
@@ -132,4 +134,62 @@ let designerQuestion = interviewQuestion('designer');
 designerQuestion('Markus');
 teacherQuestion('Jonnas');  
 interviewQuestion('Boxer')('Sultan');
+*/
 
+/* Invoked Function Expression (IIFE)*/
+
+/*
+function game(){
+    let score = Math.random() * 10;
+    console.log( score >= 5);
+}
+
+game();
+
+(function (){
+    var score = Math.random() * 10;
+    console.log( score >= 5); 
+})();
+
+(function(factor) {
+    var score = Math.random() * 10;
+    console.log( score >= 5 - factor)
+})(5);
+*/
+
+
+/* Closures */
+
+/*
+function retirement(retirementAge){
+    var text = ' years left until retirement.';
+
+    return function(yearOfBirth){
+        var age = new Date().getFullYear() - yearOfBirth;
+        console.log((retirementAge - age) + text);
+    }
+}
+
+let retirementUS = retirement(66);
+retirementUS(1990);
+
+retirement(72)(2002);
+
+function interviewQuestion(job){ 
+
+    return function(name){
+        if(job === 'designer'){
+            console.log(', can you please explain what is UX design is?');
+        } else if(job === 'teacher'){
+            console.log('What subject do you teach, ' + name + '?');
+        } else{
+            console.log('Hello ' + this.name + ', what do you do?');
+        }
+    }
+}
+
+interviewQuestion('teacher')('Johny');
+
+*/
+
+/* Bind, call and apply */
